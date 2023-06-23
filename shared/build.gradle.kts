@@ -33,6 +33,9 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                // Custom modules
+                implementation(project(":design-system"))
             }
         }
         val androidMain by getting {

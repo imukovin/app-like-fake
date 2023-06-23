@@ -1,8 +1,5 @@
 rootProject.name = "AppLikeFake"
 
-include(":androidApp")
-include(":shared")
-
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -33,3 +30,7 @@ dependencyResolutionManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
+
+include(":androidApp")
+include(":shared")
+include(":design-system")
