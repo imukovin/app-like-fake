@@ -1,4 +1,4 @@
-package com.imujstudio.applikefake.design_system.theme
+package com.imukstudio.applikefake.design_system.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable

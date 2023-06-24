@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -22,20 +23,30 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+        extraSpecAttributes["resources"] = "[" +
+                "'design-system/src/commonMain/resources/**', " +
+                "'src/commonMain/resources/**'" +
+                "]"
+        extraSpecAttributes["exclude_files"] = "['string-resources/src/commonMain/resources/MR/**']"
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                val mokoResourcesVersion = extra["moko.resources.version"] as String
+
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+                api("dev.icerock.moko:resources:${mokoResourcesVersion}")
+                api("dev.icerock.moko:resources-compose:${mokoResourcesVersion}")
+
                 // Custom modules
-                implementation(project(":design-system"))
+                implementation(project(":shared:design-system"))
+                implementation(project(":shared:string-resources"))
             }
         }
         val androidMain by getting {
@@ -63,7 +74,8 @@ android {
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
-    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources", "design-system/src/commonMain/resources")
+    sourceSets["main"].resources.exclude("string-resources/src/commonMain/resources/MR")
 
     defaultConfig {
         minSdk = (findProperty("android.minSdk") as String).toInt()
