@@ -13,15 +13,9 @@ kotlin {
         }
     }
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "design-system"
-        }
-    }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -29,13 +23,18 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.components.resources)
+
+                implementation(project(":shared:string-resources"))
             }
         }
     }
 }
 
 android {
-    namespace = "com.imujstudio.applikefake.design_system"
+    namespace = "com.imukstudio.applikefake.design_system"
+
     compileSdk = 33
     defaultConfig {
         minSdk = 24

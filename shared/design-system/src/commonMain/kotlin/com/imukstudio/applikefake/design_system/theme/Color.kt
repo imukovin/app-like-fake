@@ -1,4 +1,4 @@
-package com.imujstudio.applikefake.design_system.theme
+package com.imukstudio.applikefake.design_system.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
@@ -28,11 +28,19 @@ private val elementPrimaryDark = Color(0xFFFDEECB)
 private val elementSecondaryLight = Color(0xFFD7DDEA)
 private val elementSecondaryDark = Color(0xFFD7DDEA)
 
+/**
+ * These colors are needed for elements that do not change colors.
+ */
+private val pureBlack = Color(0xFF000000)
+private val black = Color(0xFF393939)
+
+
 @Immutable
 data class AppLikeFakeColors(
     val background: BackgroundColors,
     val text: TextColors,
     val element: ElementColors,
+    val constant: ConstantColors,
     val isLight: Boolean,
 ) {
     data class BackgroundColors(
@@ -46,6 +54,11 @@ data class AppLikeFakeColors(
     data class ElementColors(
         val primary: Color,
         val secondary: Color,
+    )
+
+    data class ConstantColors(
+        val pureBlack: Color,
+        val black: Color,
     )
 }
 
@@ -63,6 +76,10 @@ val lightColors by lazy {
         element = AppLikeFakeColors.ElementColors(
             primary = elementPrimaryLight,
             secondary = elementSecondaryLight,
+        ),
+        constant = AppLikeFakeColors.ConstantColors(
+            pureBlack = pureBlack,
+            black = black,
         ),
         isLight = true,
     )
@@ -82,6 +99,10 @@ val darkColors by lazy {
         element = AppLikeFakeColors.ElementColors(
             primary = elementPrimaryDark,
             secondary = elementSecondaryDark,
+        ),
+        constant = AppLikeFakeColors.ConstantColors(
+            pureBlack = pureBlack,
+            black = black,
         ),
         isLight = false,
     )

@@ -11,6 +11,7 @@ pluginManagement {
         val kotlinVersion = extra["kotlin.version"] as String
         val agpVersion = extra["agp.version"] as String
         val composeVersion = extra["compose.version"] as String
+        val mokoResourcesVersion = extra["moko.resources.version"] as String
 
         kotlin("jvm").version(kotlinVersion)
         kotlin("multiplatform").version(kotlinVersion)
@@ -20,6 +21,7 @@ pluginManagement {
         id("com.android.library").version(agpVersion)
 
         id("org.jetbrains.compose").version(composeVersion)
+        id("dev.icerock.mobile.multiplatform-resources").version(mokoResourcesVersion)
     }
 }
 
@@ -33,4 +35,5 @@ dependencyResolutionManagement {
 
 include(":androidApp")
 include(":shared")
-include(":design-system")
+include(":shared:design-system")
+include(":shared:string-resources")
