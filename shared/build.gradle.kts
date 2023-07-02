@@ -28,6 +28,10 @@ kotlin {
                 "'src/commonMain/resources/**'" +
                 "]"
         extraSpecAttributes["exclude_files"] = "['string-resources/src/commonMain/resources/MR/**']"
+
+        pod("YandexMapsMobile") {
+            version = "4.3.1-lite"
+        }
     }
 
     sourceSets {
@@ -41,6 +45,7 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+                implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
                 api("dev.icerock.moko:resources:${mokoResourcesVersion}")
                 api("dev.icerock.moko:resources-compose:${mokoResourcesVersion}")
 

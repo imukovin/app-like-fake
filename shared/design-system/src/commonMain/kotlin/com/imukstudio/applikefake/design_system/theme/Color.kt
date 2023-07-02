@@ -11,6 +11,10 @@ import androidx.compose.ui.graphics.Color
 private val backgroundPrimaryLight = Color(0xFFFFFFFF)
 private val backgroundPrimaryDark = Color(0xFF393939)
 
+// The secondary background colors.
+private val backgroundSecondaryLight = Color(0xFFF6F6F6)
+private val backgroundSecondaryDark = Color(0xFF2A2A2A)
+
 /**
  * Text colors.
  */
@@ -33,6 +37,8 @@ private val elementSecondaryDark = Color(0xFFD7DDEA)
  */
 private val pureBlack = Color(0xFF000000)
 private val black = Color(0xFF393939)
+private val white = Color(0xFFFFFFFF)
+private val gray7 = Color(0xFF6E6E6E)
 
 
 @Immutable
@@ -45,6 +51,7 @@ data class AppLikeFakeColors(
 ) {
     data class BackgroundColors(
         val primary: Color,
+        val secondary: Color,
     )
 
     data class TextColors(
@@ -59,6 +66,8 @@ data class AppLikeFakeColors(
     data class ConstantColors(
         val pureBlack: Color,
         val black: Color,
+        val white: Color,
+        val gray7: Color,
     )
 }
 
@@ -69,6 +78,7 @@ val lightColors by lazy {
     AppLikeFakeColors(
         background = AppLikeFakeColors.BackgroundColors(
             primary = backgroundPrimaryLight,
+            secondary = backgroundSecondaryLight,
         ),
         text = AppLikeFakeColors.TextColors(
             primary = textPrimaryLight,
@@ -80,6 +90,8 @@ val lightColors by lazy {
         constant = AppLikeFakeColors.ConstantColors(
             pureBlack = pureBlack,
             black = black,
+            white = white,
+            gray7 = gray7,
         ),
         isLight = true,
     )
@@ -92,6 +104,7 @@ val darkColors by lazy {
     AppLikeFakeColors(
         background = AppLikeFakeColors.BackgroundColors(
             primary = backgroundPrimaryDark,
+            secondary = backgroundSecondaryDark,
         ),
         text = AppLikeFakeColors.TextColors(
             primary = textPrimaryDark,
@@ -103,6 +116,8 @@ val darkColors by lazy {
         constant = AppLikeFakeColors.ConstantColors(
             pureBlack = pureBlack,
             black = black,
+            white = white,
+            gray7 = gray7,
         ),
         isLight = false,
     )
