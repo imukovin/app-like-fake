@@ -22,6 +22,7 @@ fun AppLikeFakeTheme(
 
     CompositionLocalProvider(
         LocalAppLikeFakeColors provides appLikeFakeColors,
+        LocalAppLikeFakeTypography provides appLikeFakeTypography,
         LocalDensity provides Density(
             density = LocalDensity.current.density,
             fontScale = LocalDensity.current.fontScale
@@ -35,4 +36,10 @@ object AppLikeFakeTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalAppLikeFakeColors.current
+
+    val typography: AppLikeFakeTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppLikeFakeTypography.current
+
 }

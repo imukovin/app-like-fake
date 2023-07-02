@@ -26,6 +26,7 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+                implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
                 implementation(project(":shared:string-resources"))
             }
         }

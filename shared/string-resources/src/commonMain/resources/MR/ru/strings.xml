@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-    <string name="menu">Меню</string>
-    <string name="map">Карта</string>
+    <string name="profile">Профиль</string>
+    <string name="people">Люди</string>
 </resources>
